@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gf-pink: #ff4d6d;
+  --color-gf-rose: #ff758f;
+  --color-gf-violet: #7209b7;
+  --color-gf-indigo: #3f37c9;
+  --color-gf-dark: #0a0506;
+  --color-gf-accent: #1a0b0d;
+  --color-gf-glass: rgba(255, 77, 109, 0.05);
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-gf-dark text-gray-200 antialiased selection:bg-gf-pink/30 transition-colors duration-500;
+    background-image: radial-gradient(circle at 50% -20%, #2d1216 0%, #0a0506 100%);
+    --text-muted: #9ca3af; /* gray-400 */
+    --text-main: #e5e7eb; /* gray-200 */
+    --text-heading: #ffffff;
+  }
+
+  body.light {
+    @apply bg-white text-gray-900;
+    background-image: radial-gradient(circle at 50% -20%, #fff0f3 0%, #ffffff 100%);
+    --text-muted: #4b5563; /* gray-600 */
+    --text-main: #1f2937; /* gray-800 */
+    --text-heading: #000000;
+  }
+}
+
+.pink-gradient {
+  background: linear-gradient(135deg, #ff4d6d 0%, #7209b7 50%, #3f37c9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl transition-all duration-500;
+}
+
+.light .glass-card {
+  @apply bg-black/[0.02] border-black/[0.05] shadow-xl;
+}
+
+.pink-border {
+  border: 1px solid transparent;
+  background: linear-gradient(#0a0506, #0a0506) padding-box,
+              linear-gradient(135deg, #ff4d6d, #7209b7, #3f37c9) border-box;
+}
+
+.light .pink-border {
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(135deg, #ff4d6d, #7209b7, #3f37c9) border-box;
+}
+
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.light .grain {
+  opacity: 0.05;
+}
